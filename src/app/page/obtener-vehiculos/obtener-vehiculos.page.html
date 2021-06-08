@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar class="azul">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+          </ion-buttons>
+    <ion-title color="light">Vehiculos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+<br>
+<ion-item>
+  <ion-label>VEHICULOS</ion-label>
+  <ion-select placeholder="Seleccione Vehiculo" [(ngModel)]="SeleccionarVehiculo" [selectedText]="SeleccionarVehiculo">
+    <ion-select-option  *ngFor="let item of DatosVehiculos" value="{{item.Vehiculo}}" (ionChange)="crazyEvent($event)">{{item.Vehiculo}}</ion-select-option>
+  </ion-select>
+</ion-item>
+<br >
+<ion-item>
+  <ion-label position="stacked" >REMOLQUES</ion-label>
+  <ion-input placeholder="Remolque 1" [(ngModel)]="SeleccionarRemolques1"></ion-input>
+  <ion-input placeholder="Remolque 2" [(ngModel)]="SeleccionarRemolques2"></ion-input>
+</ion-item>
+<br >
+<ion-item>
+  <ion-label position="stacked">ENVIOS</ion-label>
+  <ion-input placeholder="Remolque 1" [(ngModel)]="SeleccionarEnvios"></ion-input>
+</ion-item>
+<br >
+  <ion-button class="buttonEntero azul" (click)="this.fncSeleccionar()">
+    Seleccionar
+  </ion-button>
+
+
+</ion-content>

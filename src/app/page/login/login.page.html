@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="padding">
+    
+    <div class="logo">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <!-- <ion-icon color="light" name="contact"></ion-icon> -->
+      <!-- <ion-icon color="light" name="cloudy-night"></ion-icon> -->
+      <!-- <img src="../../assets/logo.png"> -->
+    </div>
+     
+      <ion-item >
+        <ion-icon color="light" name="person-outline" slot="start"></ion-icon>
+        <ion-input color="light" 
+                    type="users" 
+                    name="users"
+                    [(ngModel)]="users"
+                    placeholder="Usuario"
+                   ></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-icon color="light" name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-input color="light" name="password" type="password" placeholder="Contraseña" [(ngModel)]="pass"></ion-input>
+      </ion-item>
+      <br>
+      <br>
+      <ion-button color="light" 
+      expand="block" 
+      name="inciar"
+      shape="round" 
+      fill="outline" 
+      (click)="Logearme()"
+      >Iniciar Sesión</ion-button>
+
+      <!-- (click)="Login()" -->
+   
+
+    
+  </div>
+</ion-content>

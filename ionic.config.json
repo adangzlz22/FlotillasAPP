@@ -1,0 +1,7 @@
+{
+  "name": "AppFlotillas",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

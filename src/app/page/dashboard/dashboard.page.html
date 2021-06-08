@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar class="azul">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+          </ion-buttons>
+    <ion-title color="light">Chofer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+<br><br >
+<!-- <ion-button class="buttonEntero" color="danger">
+  <ion-icon name=""></ion-icon>
+  {{this.tiempo}}
+</ion-button> -->
+<br>
+<ion-item>
+  <ion-button [(color)]="coloranteOff" (click)="OFF()">
+    <ion-icon slot="start"></ion-icon>
+    OFF
+  </ion-button>
+  <ion-button [(color)]="coloranteSB" (click)="SB()">
+    SB
+    <ion-icon slot="end"></ion-icon>
+  </ion-button>
+</ion-item>
+<br >
+<ion-item>
+  <ion-button [(color)]="coloranteDrive" (click)="DRIVE()">
+    <ion-icon slot="start"></ion-icon>
+    D
+  </ion-button>
+  
+  <ion-button [(color)]="coloranteOn" (click)="ON()">
+    ON
+    <ion-icon slot="end"></ion-icon>
+  </ion-button>
+    <br >
+</ion-item>
+  
+
+
+    <!-- <ion-button class="buttonEntero" color="danger">
+      <ion-icon name="star"></ion-icon>
+      Reglas de tiempo
+    </ion-button>
+    <br>
+    <ion-button class="buttonEntero" color="danger">
+      <ion-icon name="star"></ion-icon>
+      Reglas de tiempo
+    </ion-button> -->
+    <br>
+  <ion-split-pane>
+    <ion-menu contentId="content">
+  <ion-content>
+    <ion-list>
+      
+        <ion-item (click)="EntrarABitacora()"><ion-icon name="briefcase" slot="start"></ion-icon>Bitacora</ion-item>
+        <ion-item (click)="EnviarInspeccion()"><ion-icon name="briefcase" slot="start"></ion-icon>Inspeccion</ion-item>
+        <ion-item><ion-icon name="information-circle-outline" slot="start"></ion-icon>Acerca de</ion-item>
+      
+    </ion-list>
+  </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="content" main></ion-router-outlet>
+  </ion-split-pane>
+
+</ion-content>

@@ -1,0 +1,34 @@
+ion-button{
+    width: 170px;
+    height: 80px;
+    padding: 5px;
+    margin: 5px;
+}
+.buttonEntero{
+    width: 350px;
+    height: 50px;
+    padding: 5px;
+    margin: 5px;
+}
+.my-custom-menu {
+    --width: 500px;
+  }
+  .rojo{
+      background-color: #ff0000;
+
+  }
+.black{
+    background-color: black;
+
+}
+.orange{
+    background-color: orange;
+
+}
+.verde{
+    background-color: green;
+
+}
+.azul{
+    --ion-background-color: #0e5496 ;
+}
