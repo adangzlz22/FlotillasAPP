@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -16,6 +16,10 @@ import { UsuarioProvider } from './providers/login';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
+import { ChoferesService } from './providers/choferes.service';
+import { HomePageModule } from './home/home.module';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -23,8 +27,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 
 @NgModule({
-  declarations: [AppComponent, 
-                ],
+  declarations: [AppComponent
+  ],
   entryComponents: [
   ],
   imports: [BrowserModule,  
@@ -32,14 +36,18 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
             AppRoutingModule,
             HttpClientModule,
             FullCalendarModule,
+            HomePageModule
           ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
                PeticionProvider,
                UsuarioProvider,
                ConfigProvider,
-               TipoPeticionControllerProvider
+               TipoPeticionControllerProvider,
+               ChoferesService,
+               FileOpener,
+               File
   ],
-  bootstrap: [AppComponent,
-              ],
+  bootstrap: [AppComponent,],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule {}

@@ -54,8 +54,10 @@ export class DashboardPage implements OnInit {
     this.navCtrl.navigateRoot('certificar-inspeccion');
   }
   ObtenerEstatus(){
+    const user = this.userProv.getSesion();
+
     let objModel = {
-      idChofer:this.peticion.idChofer
+      idChofer: user.idChofer
     }
       this.peticion.Post('Bitacora/ObtenerEstatusActivo',objModel).then(result=>{
      let re = JSON.parse(result['Model']);

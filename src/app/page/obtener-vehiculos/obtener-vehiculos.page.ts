@@ -28,12 +28,13 @@ export class ObtenerVehiculosPage implements OnInit {
   }
 
   obtenerVehiculos(){
+    const user = this.userProv.getSesion();
     let objModel = {
-       user:this.userProv.userSmbTrack ,
+       user: user.user ,
        Content: "application/json",
-       accessToken: this.userProv.datos.token,
-       keyUser: this.userProv.keyUser,
-       idUser: this.userProv.datos.idUser,
+       accessToken: user.accessToken,
+       keyUser: user.keyUser,
+       idUser: user.idUser,
      }
      this.peticion.Post('Choferes/ObtenerVehiculos',objModel).then(result=>{ 
        this.datos = JSON.parse(result['Model']);
@@ -46,6 +47,7 @@ export class ObtenerVehiculosPage implements OnInit {
 
   fncSeleccionar(){
     console.log(this.SeleccionarVehiculo);
+    const user = this.userProv.getSesion();
 
     this.peticion.objVehiculo.vehiculo = this.SeleccionarVehiculo;
     this.peticion.objVehiculo.remolque1 = this.SeleccionarRemolques1;
@@ -54,7 +56,7 @@ export class ObtenerVehiculosPage implements OnInit {
 
     let SessionApp={
       placa:this.SeleccionarVehiculo,
-      idChofer:this.peticion.idChofer
+      idChofer: user.idChofer
     }
 
     this.peticion.Post('choferes/GuardarSessionAppActiva',SessionApp).then(result2=>{

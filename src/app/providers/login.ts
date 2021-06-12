@@ -60,8 +60,12 @@ export class  UsuarioProvider {
       );
     });
     return usuario;
-    }
+  }
   
-  
-
+  setSesion(User: any){
+    localStorage.setItem("User", User);
+  }
+  getSesion(){
+    return JSON.parse(localStorage.getItem("User"));
+  }
 }

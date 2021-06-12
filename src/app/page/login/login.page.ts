@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { ChoferesService } from 'src/app/providers/choferes.service';
 import { UsuarioProvider } from 'src/app/providers/login';
 import {PeticionProvider} from '../../providers/peticiones'
 
@@ -17,7 +19,8 @@ export class LoginPage implements OnInit {
   datos:any;
   constructor( private peticion:PeticionProvider,
                 private userProviders:UsuarioProvider,
-                private navCtrl:NavController) { }
+                private navCtrl:NavController, private router: Router,
+                 public chofPR: ChoferesService) { }
 
   ngOnInit() {
   }
@@ -61,10 +64,11 @@ export class LoginPage implements OnInit {
             inicioSession:true,
           }
           this.peticion.Post('choferes/GuardarSessionAppActiva',GuardarSessionAppActiva).then(result2=>{
+                this.guardarStorage(objModel, model, modeloSession, GuardarSessionAppActiva);
                 let datos2 = JSON.parse(result2['Model']);
                 this.peticion.idSessionActiva = datos2.id;
                 console.log('-------------->',this.peticion.idSessionActiva );
-                this.navCtrl.navigateRoot('obtener-vehiculos');
+                this.ValidarReedireccionamiento();
           }).catch(errr=>{
             console.log(errr)
             });
@@ -79,5 +83,29 @@ export class LoginPage implements OnInit {
     });    
   } 
 
+  guardarStorage(userlogin: any,model: any, modeloSession: any, GuardarSessionAppActiva: any ){
+    const user = {
+      users:this.users,
+      user:this.userProviders.userSmbTrack ,
+      keyUser:this.userProviders.keyUser,
+      idEmpresa: this.peticion.idEmpresa,
+      ...modeloSession,
+      ...GuardarSessionAppActiva   
+    }    
+    this.userProviders.setSesion(JSON.stringify(user));
+  }
 
+  ValidarReedireccionamiento(){
+    this.chofPR.tieneCarroSesion().then(res=>{
+      let datos2 = JSON.parse(res['Model']);
+      if (datos2 && datos2.inicioSession) {
+        this.router.navigateByUrl('/dashboard');
+      }else{
+        this.router.navigateByUrl('/obtener-vehiculos');
+      }
+    },err=>{
+      console.log("TipoSesion Error",err);
+      this.router.navigateByUrl('/obtener-vehiculos');
+    });
+  }
 }

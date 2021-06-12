@@ -87,6 +87,29 @@ export class  PeticionProvider {
     return usuario;
     }
 
+    get(endpoint) {
+      let usuario = new Promise((resolve,reject) => {
+  
+      const httpOptions = {
+        headers: new HttpHeaders({
+        })
+      };
+  
+      let url = endpoint;
+   
+      this.http.get(url, httpOptions).subscribe(
+        val => {
+            resolve(val);
+        },
+        Error => {
+          console.log("POST call in error", Error);
+            reject(Error);
+        }
+      );
+    });
+    return usuario;
+    }
+
     postSmbTrack(endpoint,keyUser,user,pass) {
       let usuario = new Promise((resolve,reject) => {
         
