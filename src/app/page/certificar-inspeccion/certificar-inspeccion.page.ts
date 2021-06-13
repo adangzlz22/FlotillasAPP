@@ -43,11 +43,13 @@ export class CertificarInspeccionPage implements OnInit {
   ) {
     this.certificar = new Certificacion();
     this.Otroscertificar = new OtroCertificacion();
+    this.validarTablas();
 
     this.route.queryParams.subscribe((params) => {      
       let navParams = this.router.getCurrentNavigation().extras.state;
       if (navParams && navParams.certificado) {
         this.certificar =  navParams.certificado;
+        this.validarOtrosYaGuardados();
       }
     });
     if (!this.certificar || !this.certificar.idChofer) {
@@ -57,12 +59,9 @@ export class CertificarInspeccionPage implements OnInit {
   }
 
   ngOnInit() {
-    this.validarTablas();
-    console.log('haciendo click');
   }
 
   EnviarCorre() {
-    console.log(this.certificar);
     // var docDefinition = {
     //   content: [
     //     "HELLO WORLD",
@@ -410,7 +409,6 @@ export class CertificarInspeccionPage implements OnInit {
         (res) => {
           this.presentAlertSucced('EXITO!','Cambios guardados correctamente');
           this.navCtrl.navigateForward('certificacionesLst');
-          console.log('certificar');
         },
         (err) => {
           console.log(err);
@@ -419,6 +417,7 @@ export class CertificarInspeccionPage implements OnInit {
       );
     }
   }
+  
   async presentAlertPrompt() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -472,6 +471,7 @@ export class CertificarInspeccionPage implements OnInit {
       });
     }
   }
+
   generarBody(){
     let msg = ''
     msg = `
@@ -508,7 +508,6 @@ export class CertificarInspeccionPage implements OnInit {
     await alert.present();
 
     const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
   }
 
   generarObj(){
@@ -537,5 +536,52 @@ export class CertificarInspeccionPage implements OnInit {
       TipoInspeccion: this.certificar.TipoInspeccion ? this.certificar.TipoInspeccion : ''  
     }
     return modal
+  }
+
+  validarOtrosYaGuardados(){    
+    if(this.certificar.FrenosEstacionamiento != null && this.frnEstacionamiento.filter(res=> res.title == this.certificar.FrenosEstacionamiento).length == 0){
+      this.Otroscertificar.FrenosEstacionamiento = this.certificar.FrenosEstacionamiento;
+      this.certificar.FrenosEstacionamiento = 'Otro';
+    }
+    if(this.certificar.FrenosMantenimiento != null && this.frnMantenimiento.filter(res=> res.title == this.certificar.FrenosMantenimiento).length == 0){
+      this.Otroscertificar.FrenosMantenimiento = this.certificar.FrenosMantenimiento;
+      this.certificar.FrenosMantenimiento = 'Otro';
+    }
+    if(this.certificar.DispositivosAcoplamiento != null && this.frnDispositivo.filter(res=> res.title == this.certificar.DispositivosAcoplamiento).length == 0){
+      this.Otroscertificar.DispositivosAcoplamiento = this.certificar.DispositivosAcoplamiento;
+      this.certificar.DispositivosAcoplamiento = 'Otro';
+    }
+    if(this.certificar.EquipoDeUrgencia != null && this.frnEquipo.filter(res=> res.title == this.certificar.EquipoDeUrgencia).length == 0){
+      this.Otroscertificar.EquipoDeUrgencia = this.certificar.EquipoDeUrgencia;
+      this.certificar.EquipoDeUrgencia = 'Otro';
+    }
+    if(this.certificar.Bocina != null && this.frnBocina.filter(res=> res.title == this.certificar.Bocina).length == 0){
+      this.Otroscertificar.Bocina = this.certificar.Bocina;
+      this.certificar.Bocina = 'Otro';
+    }
+    if(this.certificar.LucesYReflectores != null && this.frnReflectores.filter(res=> res.title == this.certificar.LucesYReflectores).length == 0){
+      this.Otroscertificar.LucesYReflectores = this.certificar.LucesYReflectores;
+      this.certificar.LucesYReflectores = 'Otro';
+    }
+    if(this.certificar.Retrovisores != null && this.frnRetrovisores.filter(res=> res.title == this.certificar.Retrovisores).length == 0){
+      this.Otroscertificar.Retrovisores = this.certificar.Retrovisores;
+      this.certificar.Retrovisores = 'Otro';
+    }
+    if(this.certificar.Direccion != null && this.frnDireccion.filter(res=> res.title == this.certificar.Direccion).length == 0){
+      this.Otroscertificar.Direccion = this.certificar.Direccion;
+      this.certificar.Direccion = 'Otro';
+    }
+    if(this.certificar.Neumaticos != null && this.frnNeumaticos.filter(res=> res.title == this.certificar.Neumaticos).length == 0){
+      this.Otroscertificar.Neumaticos = this.certificar.Neumaticos;
+      this.certificar.Neumaticos = 'Otro';
+    }
+    if(this.certificar.RuedasYLlantas != null && this.frnRuedas.filter(res=> res.title == this.certificar.RuedasYLlantas).length == 0){
+      this.Otroscertificar.RuedasYLlantas = this.certificar.RuedasYLlantas;
+      this.certificar.RuedasYLlantas = 'Otro';
+    }
+    if(this.certificar.Limpiaparabrisas != null && this.frnParabrisas.filter(res=> res.title == this.certificar.Limpiaparabrisas).length == 0){
+      this.Otroscertificar.Limpiaparabrisas = this.certificar.Limpiaparabrisas;
+      this.certificar.Limpiaparabrisas = 'Otro';
+    }
   }
 }

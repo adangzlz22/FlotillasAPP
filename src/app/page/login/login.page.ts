@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 import { ChoferesService } from 'src/app/providers/choferes.service';
 import { UsuarioProvider } from 'src/app/providers/login';
 import {PeticionProvider} from '../../providers/peticiones'
@@ -20,11 +20,16 @@ export class LoginPage implements OnInit {
   constructor( private peticion:PeticionProvider,
                 private userProviders:UsuarioProvider,
                 private navCtrl:NavController, private router: Router,
-                 public chofPR: ChoferesService) { }
+                 public chofPR: ChoferesService, private menuCtrl: MenuController) { }
 
   ngOnInit() {
   }
-
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
+  ionViewDidLeave() {
+    this.menuCtrl.enable(true);
+  }
   Logearme() {
     let objModel = {
       users:this.users,

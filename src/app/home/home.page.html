@@ -4,6 +4,9 @@
     <ion-menu-toggle *ngFor="let c of datosMenu" (click)="EnviarInspeccion(c.enlace)">
       <ion-item (click)="EnviarInspeccion(c.enlace)"><ion-icon [name]="c.Icon" slot="start"></ion-icon>{{c.nombre}}</ion-item>
     </ion-menu-toggle>
+    <ion-menu-toggle >
+      <ion-item (click)="logouth()"><ion-icon name="log-out" slot="start"></ion-icon>Logout</ion-item>
+    </ion-menu-toggle>
   </ion-list>
 </ion-content>
 </ion-menu>

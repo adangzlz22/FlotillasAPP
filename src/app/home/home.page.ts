@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuController, NavController } from '@ionic/angular';
 import { PeticionProvider } from '../providers/peticiones';
 export interface MenuElementsInterface {
@@ -36,11 +37,19 @@ export class HomePage {
   ];
   constructor(private navCtrl:NavController,
     private menu:MenuController,
-    private peticion:PeticionProvider) {}
+    private peticion:PeticionProvider,
+    public _router: Router) {}
 
     EnviarInspeccion(url){
       console.log(url);
       
       this.navCtrl.navigateRoot(url);
+    }
+
+    logouth(){
+      localStorage.clear();
+      this.menu.close().then(()=>{
+        this._router.navigateByUrl('/', { replaceUrl:true });
+      })
     }
 }
