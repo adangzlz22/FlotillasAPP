@@ -36,6 +36,11 @@ const routes: Routes = [
     path: 'modal-remolque',
     loadChildren: () => import('./page/modal-remolque/modal-remolque.module').then( m => m.ModalRemolquePageModule)
   },
+  {
+    path: 'certificacionesLst',
+    loadChildren: () => import('./page/certificaciones/certificaciones.module').then( m => m.CertificacionesLstPageModule)
+  },
+
 ];
 
 @NgModule({

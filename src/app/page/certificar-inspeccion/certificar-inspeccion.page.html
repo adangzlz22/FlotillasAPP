@@ -12,142 +12,203 @@
   <ion-card>
     <ion-item>
       <ion-label>Frenos (de estacionamiento)</ion-label>
-      <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-        <ion-select-option value="le">Dificil de liberar</ion-select-option>
-        <ion-select-option value="blonde">Sueltos o ineficaces</ion-select-option>
-        <ion-select-option value="black">No se libera</ion-select-option>
-        <ion-select-option value="red">Otro</ion-select-option>
+      <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.FrenosEstacionamiento">
+        <ion-select-option [value]="item.title" *ngFor="let item of frnEstacionamiento">{{item.title}}</ion-select-option>
       </ion-select>
     </ion-item>
-
+    <ion-item *ngIf="certificar.FrenosEstacionamiento == 'Otro'">
+      <ion-label>Otro Frenos (de estacionamiento)</ion-label>
+      <ion-input [(ngModel)]="Otroscertificar.FrenosEstacionamiento"></ion-input>
+    </ion-item>
     
   <ion-item>
     <ion-label>Frenos (Mantenimiento)</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="le">El compreso de aire no funciona</ion-select-option>
-      <ion-select-option value="blonde">Temblor,vibracion,chachara</ion-select-option>
-      <ion-select-option value="black">Se arrastran</ion-select-option>
-      <ion-select-option value="red">Fuga de aire</ion-select-option>
-      <ion-select-option value="red">perdida de liquido</ion-select-option>
-      <ion-select-option value="red">Sobrecalentamiento o funciona a alta temperatura</ion-select-option>
-      <ion-select-option value="red">Gripado</ion-select-option>
-      <ion-select-option value="red">Fuga La luz de advertencia no funciona</ion-select-option>
-      <ion-select-option value="red">la luz de advertencia esta encendida</ion-select-option>
-      <ion-select-option value="red">sueltos e ineficaces</ion-select-option>
-      <ion-select-option value="red">Otro</ion-select-option>
+    <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.FrenosMantenimiento">
+      <ion-select-option [value]="item.title" *ngFor="let item of frnMantenimiento">{{item.title}}</ion-select-option>
+
+      <!-- <ion-select-option value="1">El compreso de aire no funciona</ion-select-option>
+      <ion-select-option value="2">Temblor,vibracion,chachara</ion-select-option>
+      <ion-select-option value="3">Se arrastran</ion-select-option>
+      <ion-select-option value="4">Fuga de aire</ion-select-option>
+      <ion-select-option value="5">perdida de liquido</ion-select-option>
+      <ion-select-option value="6">Sobrecalentamiento o funciona a alta temperatura</ion-select-option>
+      <ion-select-option value="7">Gripado</ion-select-option>
+      <ion-select-option value="8">Fuga La luz de advertencia no funciona</ion-select-option>
+      <ion-select-option value="9">la luz de advertencia esta encendida</ion-select-option>
+      <ion-select-option value="10">sueltos e ineficaces</ion-select-option>
+      <ion-select-option value="11">Otro</ion-select-option> -->
     </ion-select>
   </ion-item>
+  <ion-item *ngIf="certificar.FrenosMantenimiento == 'Otro'">
+    <ion-label>Otro Frenos (Mantenimiento)</ion-label>
+    <ion-input [(ngModel)]="Otroscertificar.FrenosMantenimiento"></ion-input>
+  </ion-item>
+  
   <ion-item>
     <ion-label>Dispositivo de acoplamiento</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="le">Quinta rueda agrietada o dañada</ion-select-option>
-      <ion-select-option value="blonde">Otro</ion-select-option>
+    <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.DispositivosAcoplamiento">
+      <ion-select-option [value]="item.title" *ngFor="let item of frnDispositivo">{{item.title}}</ion-select-option>
+
+      <!-- <ion-select-option value="1">Quinta rueda agrietada o dañada</ion-select-option>
+      <ion-select-option value="2">Otro</ion-select-option> -->
     </ion-select>
   </ion-item>
-     
+  <ion-item *ngIf="certificar.DispositivosAcoplamiento == 'Otro'">
+    <ion-label>Otro Dispositivo de acoplamiento</ion-label>
+    <ion-input [(ngModel)]="Otroscertificar.DispositivosAcoplamiento"></ion-input>
+  </ion-item>
+
   <ion-item>
     <ion-label>Equipo de urgencia</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="le">Falta de extinguidor</ion-select-option>
-      <ion-select-option value="blonde">El extinguidor no esta cargado</ion-select-option>
-      <ion-select-option value="black">Faltan las banderas y luces de emergencia</ion-select-option>
-      <ion-select-option value="red">Faltan los triangulos reflectantes</ion-select-option>
-      <ion-select-option value="red">Faltan bombillas o fusibles de repuesto</ion-select-option>
-      <ion-select-option value="red">Falta faro sellado de repuesto</ion-select-option>
-      <ion-select-option value="red">Otro</ion-select-option>
+    <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.EquipoDeUrgencia">
+      <ion-select-option [value]="item.title" *ngFor="let item of frnEquipo">{{item.title}}</ion-select-option>
+
+      <!-- <ion-select-option value="1">Falta de extinguidor</ion-select-option>
+      <ion-select-option value="2">El extinguidor no esta cargado</ion-select-option>
+      <ion-select-option value="3">Faltan las banderas y luces de emergencia</ion-select-option>
+      <ion-select-option value="4">Faltan los triangulos reflectantes</ion-select-option>
+      <ion-select-option value="5">Faltan bombillas o fusibles de repuesto</ion-select-option>
+      <ion-select-option value="6">Falta faro sellado de repuesto</ion-select-option>
+      <ion-select-option value="7">Otro</ion-select-option> -->
     </ion-select>
+  </ion-item>
+  <ion-item *ngIf="certificar.EquipoDeUrgencia == 'Otro'">
+    <ion-label>Otro Equipo de urgencia</ion-label>
+    <ion-input [(ngModel)]="Otroscertificar.EquipoDeUrgencia"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Bocina</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="le">Bocina de aire inutilizable</ion-select-option>
-      <ion-select-option value="blonde">Bocina electrica inutilizable</ion-select-option>
-      <ion-select-option value="black">Otro</ion-select-option>
+    <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.Bocina">
+      <ion-select-option [value]="item.title" *ngFor="let item of frnBocina">{{item.title}}</ion-select-option>
+
+      <!-- <ion-select-option value="1">Bocina de aire inutilizable</ion-select-option>
+      <ion-select-option value="2">Bocina electrica inutilizable</ion-select-option>
+      <ion-select-option value="3">Otro</ion-select-option> -->
     </ion-select>
+  </ion-item>
+  <ion-item *ngIf="certificar.Bocina == 'Otro'">
+    <ion-label>Otro Bocina</ion-label>
+    <ion-input [(ngModel)]="Otroscertificar.Bocina"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Luces y reflectores</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="le">Agrietado o roto</ion-select-option>
-      <ion-select-option value="blonde">Mal enfocado</ion-select-option>
-      <ion-select-option value="black">Intermitentes de urgencia inutilizables</ion-select-option>
-      <ion-select-option value="red">Luz de freno inutilizable</ion-select-option>
-      <ion-select-option value="red">Luz de cruce inutilizable</ion-select-option>
-      <ion-select-option value="red">Luz interior inutilizable</ion-select-option>
-      <ion-select-option value="red">intermitente de giro izquierdo inutilizable</ion-select-option>
-      <ion-select-option value="red">intermitente de giro derecho inutilizable</ion-select-option>
-      <ion-select-option value="red">Faltan</ion-select-option>
-      <ion-select-option value="red">Otro</ion-select-option>
+    <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.LucesYReflectores">
+      <ion-select-option [value]="item.title" *ngFor="let item of frnReflectores">{{item.title}}</ion-select-option>
+
+      <!-- <ion-select-option value="1">Agrietado o roto</ion-select-option>
+      <ion-select-option value="2">Mal enfocado</ion-select-option>
+      <ion-select-option value="3">Intermitentes de urgencia inutilizables</ion-select-option>
+      <ion-select-option value="4">Luz de freno inutilizable</ion-select-option>
+      <ion-select-option value="5">Luz de cruce inutilizable</ion-select-option>
+      <ion-select-option value="6">Luz interior inutilizable</ion-select-option>
+      <ion-select-option value="7">intermitente de giro izquierdo inutilizable</ion-select-option>
+      <ion-select-option value="8">intermitente de giro derecho inutilizable</ion-select-option>
+      <ion-select-option value="9">Faltan</ion-select-option>
+      <ion-select-option value="10">Otro</ion-select-option> -->
     </ion-select>
+  </ion-item>
+  <ion-item *ngIf="certificar.LucesYReflectores == 'Otro'">
+    <ion-label>Otro Luces y reflectores</ion-label>
+    <ion-input [(ngModel)]="Otroscertificar.LucesYReflectores"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Retrovisores</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="le">Roto o agrietado</ion-select-option>
-      <ion-select-option value="blonde">Mal ajustadas</ion-select-option>
-      <ion-select-option value="black">Sueltas o mal instaladas</ion-select-option>
-      <ion-select-option value="red">Faltan</ion-select-option>
-      <ion-select-option value="red">Otro</ion-select-option>
+    <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.Retrovisores">
+      <ion-select-option [value]="item.title" *ngFor="let item of frnRetrovisores">{{item.title}}</ion-select-option>
+
+      <!-- <ion-select-option value="1">Roto o agrietado</ion-select-option>
+      <ion-select-option value="2">Mal ajustadas</ion-select-option>
+      <ion-select-option value="3">Sueltas o mal instaladas</ion-select-option>
+      <ion-select-option value="4">Faltan</ion-select-option>
+      <ion-select-option value="5">Otro</ion-select-option> -->
     </ion-select>
   </ion-item>
-
+  <ion-item *ngIf="certificar.Retrovisores == 'Otro'">
+    <ion-label>Otro Retrovisores</ion-label>
+    <ion-input [(ngModel)]="Otroscertificar.Retrovisores"></ion-input>
+  </ion-item>
+  
   <ion-item>
     <ion-label>Direccion</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="le">Se bloquea o se agarra</ion-select-option>
-      <ion-select-option value="blonde">Gira o tira hacia la izquierda</ion-select-option>
-      <ion-select-option value="blonde">Gira o tira hacia la derecha</ion-select-option>
-      <ion-select-option value="black">Nivel de liquido inadecuado</ion-select-option>
-      <ion-select-option value="red">Perdida de liquido</ion-select-option>
-      <ion-select-option value="red">Volante flojo o con demasiado juego</ion-select-option>
-      <ion-select-option value="red">Sobrecalentamiento o funciona a alta temperatura</ion-select-option>
-      <ion-select-option value="red">Otro</ion-select-option>
+    <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.Direccion">
+      <ion-select-option [value]="item.title" *ngFor="let item of frnDireccion">{{item.title}}</ion-select-option>
+
+      <!-- <ion-select-option value="1">Se bloquea o se agarra</ion-select-option>
+      <ion-select-option value="2">Gira o tira hacia la izquierda</ion-select-option>
+      <ion-select-option value="3">Gira o tira hacia la derecha</ion-select-option>
+      <ion-select-option value="4">Nivel de liquido inadecuado</ion-select-option>
+      <ion-select-option value="5">Perdida de liquido</ion-select-option>
+      <ion-select-option value="6">Volante flojo o con demasiado juego</ion-select-option>
+      <ion-select-option value="7">Sobrecalentamiento o funciona a alta temperatura</ion-select-option>
+      <ion-select-option value="8">Otro</ion-select-option> -->
     </ion-select>
+  </ion-item>
+  <ion-item *ngIf="certificar.Direccion == 'Otro'">
+    <ion-label>Otro Direccion</ion-label>
+    <ion-input [(ngModel)]="Otroscertificar.Direccion"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Neumaticos</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="le">Abultado o hinchado</ion-select-option>
-      <ion-select-option value="blonde">Neumatico pinchado o fuga de aire</ion-select-option>
-      <ion-select-option value="black">Mal inflado</ion-select-option>
-      <ion-select-option value="red">La banda de rodamiento no es lo bastante profunda</ion-select-option>
-      <ion-select-option value="red">Sueltas o mal instaladas</ion-select-option>
-      <ion-select-option value="red">Faltan</ion-select-option>
-      <ion-select-option value="red">Separacion de la banda de rodamiento o de la banda lateral</ion-select-option>
-      <ion-select-option value="red">Otro</ion-select-option>
+    <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.Neumaticos">
+      <ion-select-option [value]="item.title" *ngFor="let item of frnNeumaticos">{{item.title}}</ion-select-option>
+
+      <!-- <ion-select-option value="1">Abultado o hinchado</ion-select-option>
+      <ion-select-option value="2">Neumatico pinchado o fuga de aire</ion-select-option>
+      <ion-select-option value="3">Mal inflado</ion-select-option>
+      <ion-select-option value="4">La banda de rodamiento no es lo bastante profunda</ion-select-option>
+      <ion-select-option value="5">Sueltas o mal instaladas</ion-select-option>
+      <ion-select-option value="6">Faltan</ion-select-option>
+      <ion-select-option value="7">Separacion de la banda de rodamiento o de la banda lateral</ion-select-option>
+      <ion-select-option value="8">Otro</ion-select-option> -->
     </ion-select>
+  </ion-item>
+  <ion-item *ngIf="certificar.Neumaticos == 'Otro'">
+    <ion-label>Otro Neumaticos</ion-label>
+    <ion-input [(ngModel)]="Otroscertificar.Neumaticos"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Ruedas y llantas</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="le">Torcidas, agrietadas o dañadas</ion-select-option>
-      <ion-select-option value="blonde">Sellos del eje que gotean</ion-select-option>
-      <ion-select-option value="black">Sueltas o mal instaladas</ion-select-option>
-      <ion-select-option value="red">Faltan</ion-select-option>
-      <ion-select-option value="red">Enmohecido o corroido</ion-select-option>
-      <ion-select-option value="red">Otro</ion-select-option>
+    <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.RuedasYLlantas">
+      <ion-select-option [value]="item.title" *ngFor="let item of frnRuedas">{{item.title}}</ion-select-option>
+
+      <!-- <ion-select-option value="1">Torcidas, agrietadas o dañadas</ion-select-option>
+      <ion-select-option value="2">Sellos del eje que gotean</ion-select-option>
+      <ion-select-option value="3">Sueltas o mal instaladas</ion-select-option>
+      <ion-select-option value="4">Faltan</ion-select-option>
+      <ion-select-option value="5">Enmohecido o corroido</ion-select-option>
+      <ion-select-option value="6">Otro</ion-select-option> -->
     </ion-select>
+  </ion-item>
+  <ion-item *ngIf="certificar.RuedasYLlantas == 'Otro'">
+    <ion-label>Otro Ruedas y llantas</ion-label>
+    <ion-input [(ngModel)]="Otroscertificar.RuedasYLlantas"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Limpia para brisas</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="le">Rocio inadecuado</ion-select-option>
-      <ion-select-option value="blonde">Limpieza inadecuada</ion-select-option>
-      <ion-select-option value="black">Sueltas o mal instaladas</ion-select-option>
-      <ion-select-option value="red">Faltan</ion-select-option>
-      <ion-select-option value="red">Otro</ion-select-option>
+    <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.Limpiaparabrisas">
+      <ion-select-option [value]="item.title" *ngFor="let item of frnParabrisas">{{item.title}}</ion-select-option>
+
+      <!-- <ion-select-option value="1">Rocio inadecuado</ion-select-option>
+      <ion-select-option value="2">Limpieza inadecuada</ion-select-option>
+      <ion-select-option value="3">Sueltas o mal instaladas</ion-select-option>
+      <ion-select-option value="4">Faltan</ion-select-option>
+      <ion-select-option value="5">Otro</ion-select-option> -->
     </ion-select>
+  </ion-item>
+  <ion-item *ngIf="certificar.Limpiaparabrisas == 'Otro'">
+    <ion-label>Otro Ruedas y llantas</ion-label>
+    <ion-input [(ngModel)]="Otroscertificar.Limpiaparabrisas"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Otro</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="certificar.Otro"></ion-input>
   </ion-item>
 
   </ion-card>
@@ -157,16 +218,16 @@
       <ion-label>UBICACION DE LA INSPECCION</ion-label>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="DIRECCION"></ion-input>
+      <ion-input placeholder="DIRECCION" [(ngModel)]="certificar.UbicacionDeInspeccion"></ion-input>
     </ion-item>  
     <ion-item>
-      <ion-input placeholder="CIUDAD"></ion-input>
+      <ion-input placeholder="CIUDAD" [(ngModel)]="certificar.Ciudad"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="ESTADO"></ion-input>
+      <ion-input placeholder="ESTADO" [(ngModel)]="certificar.Estado"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="PAIS"></ion-input>
+      <ion-input placeholder="PAIS" [(ngModel)]="certificar.Pais"></ion-input>
     </ion-item>
   </ion-card>
   <br>
@@ -176,7 +237,7 @@
       <ion-label>OBSERVACIONES</ion-label>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="AÑADIR COMENTARIO"></ion-input>
+      <ion-input placeholder="AÑADIR COMENTARIO" [(ngModel)]="certificar.Observaciones"></ion-input>
     </ion-item>  
 
   </ion-card>
@@ -192,14 +253,18 @@
     </ion-item>
     <ion-item>
     <ion-label>Seleccione tipo de inspeccion</ion-label>
-      <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-        <ion-select-option value="le">Precio al viaje</ion-select-option>
-        <ion-select-option value="blonde">Durante al viaje</ion-select-option>
-        <ion-select-option value="black">Posterior al viaje</ion-select-option>
+      <ion-select value="brown" okText="Ok" cancelText="Cancelar" [(ngModel)]="certificar.TipoInspeccion">
+        <ion-select-option value="Precio al viaje">Precio al viaje</ion-select-option>
+        <ion-select-option value="Durante al viaje">Durante al viaje</ion-select-option>
+        <ion-select-option value="Posterior al viaje">Posterior al viaje</ion-select-option>
       
       </ion-select>
     </ion-item>
-    <ion-button class="buttonEntero" color="danger" (click)="EnviarCorre()">
+    <ion-button class="buttonEntero" color="danger" (click)="saveCertificado()" *ngIf="!certificar.id">
+      <ion-icon ></ion-icon>
+      Guardar
+    </ion-button>
+    <ion-button class="buttonEntero" color="danger" (click)="presentAlertPrompt()" *ngIf="certificar.id">
       <ion-icon ></ion-icon>
       Enviar correo
     </ion-button>

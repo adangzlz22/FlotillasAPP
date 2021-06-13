@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar class="azul">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+          </ion-buttons>
+    <ion-title color="light">Inspecciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button expand="block" class="descargarPDF" (click)="newInspeccion()">Nueva Inspección</ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let item of lstCertificaciones" (click)="abrirEditar(item)">
+      <ion-label>
+        Id : {{item.id}} <br>
+        Ubicacion : {{item.UbicacionDeInspeccion}} <br>
+        Estado : {{item.Ciudad}}<br>
+        Ciudad: {{item.Estado }} <br>
+        Pais: {{ item.Pais}}  <br></ion-label>
+       <ion-icon name="create-outline" slot="end"></ion-icon>
+    </ion-item>
+    </ion-list>
+</ion-content>

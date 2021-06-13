@@ -27,6 +27,19 @@ export class ChoferesService {
     );
   }
 
+  saveCertificado(objModelDatos) {
+    const user = this.auth.getSesion();
+    return this._TipoPeticion.Post(
+      `choferes/CrearCertificacion`,objModelDatos
+    );
+  }
+
+  obtenerCertificado() {
+    const user = this.auth.getSesion();
+    return this._TipoPeticion.get(
+      `${this.url_principal}/obtenerCertificadosInspeccion?idChofer=${user.idChofer}`
+    );
+  }
   generarTablas() {
     let OBJ = [];
     let TR = '';

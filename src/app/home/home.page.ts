@@ -18,9 +18,14 @@ export class HomePage {
       enlace: '/bitacora',
       Icon: 'briefcase'
     },
+    // {
+    //   nombre: 'Inspeccion',
+    //   enlace: '/certificar-inspeccion',
+    //   Icon: 'briefcase'
+    // },
     {
-      nombre: 'Inspeccion',
-      enlace: '/certificar-inspeccion',
+      nombre: 'Inspecciones List',
+      enlace: '/certificacionesLst',
       Icon: 'briefcase'
     },
     {
