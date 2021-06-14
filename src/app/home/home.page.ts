@@ -14,26 +14,28 @@ export interface MenuElementsInterface {
 })
 export class HomePage {
   datosMenu: MenuElementsInterface[] = [
+
+    {
+      nombre: 'Dashboard',
+      enlace: '/dashboard',
+      Icon: 'briefcase'
+    },
     {
       nombre: 'Bitacora',
       enlace: '/bitacora',
       Icon: 'briefcase'
     },
-    // {
-    //   nombre: 'Inspeccion',
-    //   enlace: '/certificar-inspeccion',
-    //   Icon: 'briefcase'
-    // },
+
     {
       nombre: 'Inspecciones List',
       enlace: '/certificacionesLst',
       Icon: 'briefcase'
     },
-    {
-      nombre: 'Acerca de',
-      enlace: '',
-      Icon: 'information-circle-outline'
-    }
+    // {
+    //   nombre: 'Acerca de',
+    //   enlace: '',
+    //   Icon: 'information-circle-outline'
+    // }
   ];
   constructor(private navCtrl:NavController,
     private menu:MenuController,
