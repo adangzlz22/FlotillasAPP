@@ -2,9 +2,9 @@
 <network-security-config>
   
     <base-config cleartextTrafficPermitted="true">
-        <trus-archors>   
-            <certificates src="system">
-        </trus-archors>   
+       <trust-anchors>
+        <certificates src="system" />
+        </trust-anchors>
     </base-config>   
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">localhost</domain>
