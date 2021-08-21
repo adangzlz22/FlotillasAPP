@@ -8,13 +8,12 @@
 </ion-header>
 
 <ion-content>
-
-
-<br><br >
-<!-- <ion-button class="buttonEntero" color="danger">
-  <ion-icon name=""></ion-icon>
-  {{this.tiempo}}
-</ion-button> -->
+<ion-item>
+   <label for="">Chofer :</label> 
+   <ion-input  [(ngModel)]="nombreCompleto"></ion-input>
+</ion-item>
+<br>
+<ion-input class="timer" [(ngModel)]="tiempo"></ion-input>
 <br>
 <ion-item>
   <ion-button [(color)]="coloranteOff" (click)="OFF()">

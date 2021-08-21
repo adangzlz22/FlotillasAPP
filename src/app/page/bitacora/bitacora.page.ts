@@ -37,7 +37,7 @@ export class BitacoraPage implements OnInit {
   };
   eventos: any;
   bitacora: any;
-  etatus = [ { id: '1', title: 'ON DURY', eventColor: 'yellow' },
+  etatus = [ { id: '1', title: 'ON DUTY', eventColor: 'yellow' },
   { id: '2', title: 'DRIVE', eventColor: 'green' },
   { id: '3', title: 'OFF', eventColor: 'black' },
   { id: '4', title: 'SB', eventColor: 'orange' }]
@@ -149,7 +149,7 @@ export class BitacoraPage implements OnInit {
         { id: '2', title: 'DRIVE', eventColor: 'green' },
         { id: '3', title: 'OFF', eventColor: 'black' },
         { id: '4', title: 'SB', eventColor: 'orange' },
-        { id: '1', title: 'ON DURY', eventColor: 'yellow' },
+        { id: '1', title: 'ON DUTY', eventColor: 'yellow' },
       ],
       events: events,
     };
@@ -286,7 +286,7 @@ export class BitacoraPage implements OnInit {
     return HeaderWhidt;
   }
   validateOnDrives(){
-   return this.chofer.headerDrives({ id: 1, title: 'ON DURY', eventColor: 'yellow' }, this.bitacora);
+   return this.chofer.headerDrives({ id: 1, title: 'ON DUTY', eventColor: 'yellow' }, this.bitacora);
   }
   validateDrives(){
     return this.chofer.headerDrives({ id: 2, title: 'DRIVE', eventColor: 'green' }, this.bitacora);

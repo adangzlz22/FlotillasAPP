@@ -103,7 +103,7 @@ export class LoginPage implements OnInit {
   ValidarReedireccionamiento(){
     this.chofPR.tieneCarroSesion().then(res=>{
       let datos2 = JSON.parse(res['Model']);
-      if (datos2 && datos2.inicioSession) {
+      if (datos2.placa != null) {
         this.router.navigateByUrl('/dashboard');
       }else{
         this.router.navigateByUrl('/obtener-vehiculos');

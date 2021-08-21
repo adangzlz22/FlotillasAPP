@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController, NavController } from '@ionic/angular';
+import { UsuarioProvider } from '../providers/login';
 import { PeticionProvider } from '../providers/peticiones';
 export interface MenuElementsInterface {
   nombre: string;
@@ -25,9 +26,13 @@ export class HomePage {
       enlace: '/bitacora',
       Icon: 'briefcase'
     },
-
     {
-      nombre: 'Inspecciones List',
+      nombre: 'Vehiculo',
+      enlace: '/obtener-vehiculos',
+      Icon: 'briefcase'
+    },
+    {
+      nombre: 'Inspecciones tracto/caja',
       enlace: '/certificacionesLst',
       Icon: 'briefcase'
     },
@@ -40,6 +45,7 @@ export class HomePage {
   constructor(private navCtrl:NavController,
     private menu:MenuController,
     private peticion:PeticionProvider,
+    private userProv:UsuarioProvider,
     public _router: Router) {}
 
     EnviarInspeccion(url){
@@ -49,9 +55,20 @@ export class HomePage {
     }
 
     logouth(){
+      const user = this.userProv.getSesion()
+      let SessionApp={
+        idChofer:user.idChofer
+      }
+  
+      this.peticion.Post('choferes/CerrarSession',SessionApp).then(result2=>{
       localStorage.clear();
       this.menu.close().then(()=>{
-        this._router.navigateByUrl('/', { replaceUrl:true });
-      })
+          this._router.navigateByUrl('/', { replaceUrl:true });
+        })
+        }).catch(errr=>{
+          console.log(errr)
+          localStorage.clear();
+        });
+  
     }
 }

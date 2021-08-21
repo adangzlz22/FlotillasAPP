@@ -16,8 +16,9 @@ export class DashboardPage implements OnInit {
   coloranteOn = 'primary';
   coloranteSB = 'primary';
   coloranteOff = 'primary';
-  tiempo ='10:00:00'
+  tiempo:any;
   idEstatusr:any;
+  nombreCompleto:any;
   constructor(private menu:MenuController,
               private userProv:UsuarioProvider,
               private peticion:PeticionProvider,
@@ -26,9 +27,94 @@ export class DashboardPage implements OnInit {
    }
 
   ngOnInit() {
+    const user  = this.userProv.getSesion();
+    
+    let SessionApp={
+      idChofer:user.idChofer
+    }
+
+    this.peticion.Post('choferes/ObtenerChoferNombre',SessionApp).then(result2=>{
+      let m = JSON.parse(result2['Model']);
+      this.nombreCompleto = m.nombre+' '+m.apeidoP+' '+m.apeidoM;
+      console.log(m)
+    }).catch(errr=>{
+        console.log(errr)
+    });
     // this.usuario();
+   this.obtenerReloj();
     this.ObtenerEstatus();
     console.log(this.peticion.objVehiculo);
+  }
+  temporizador(reloj){
+    let nuevoReloj:any;
+    let relojprueba='1:1:10';
+    let relojito:any = reloj.split(':');
+    let relojsetinterval = 1000;
+    let segundos = relojito[2];
+    let minutos = relojito[1];
+    let horas = relojito[0];
+    setInterval(() => {
+      console.log(horas,minutos,segundos)
+      console.log(0)
+      if(segundos > '00'){
+        segundos--;
+        if(segundos <= 9){
+          segundos = '0'+segundos;
+        }
+        if (minutos < '00') {
+          minutos=59;
+        }
+        if (segundos == '00') {
+          console.log(minutos)
+            minutos--;
+          if(minutos <= 9){
+            minutos = '0'+minutos;
+          }
+            if (horas <= '00') {
+              horas='00';
+            }
+            if (minutos == '00') {
+                horas--;
+                if (horas <= 9) {
+                  horas = '0'+horas;
+                }
+            }
+          }
+      }else{
+        segundos = 59;
+      }
+      
+      nuevoReloj = `  ${horas <= 9 ? '0'+horas :horas}:${minutos<= 9 ? '0'+minutos:minutos}:${segundos} `;
+      this.tiempo = nuevoReloj;
+    }, relojsetinterval);
+  }
+
+  obtenerReloj(){
+    const user  = this.userProv.getSesion();
+      let objModel = {
+        idChofer:user.idChofer
+      }
+        this.peticion.Post('Choferes/ObtenerReloj',objModel).then(result=>{
+          let re = JSON.parse(result['Model']);
+          this.relojReglas(re[0].Reloj);
+        }).catch(errr=>{
+          console.log(errr)
+      });
+  }
+  relojReglas(reloj){
+    let RelojTimer = '';
+    if(reloj >= '12:00:00.000'){
+      RelojTimer = '00:00:00';
+    } else{
+      let hora = reloj.split('.')[0];
+      let Regla:any = '11:59:60';
+      let segundos = (Regla.split(':')[2] - hora.split(':')[2]);
+      let minutos = (Regla.split(':')[1] - hora.split(':')[1]);
+      let horas = (Regla.split(':')[0] - hora.split(':')[0]);
+      RelojTimer = horas +":"+minutos+":"+segundos ;
+    } 
+    this.temporizador(RelojTimer);
+    this.tiempo = RelojTimer;
   }
 
   openFirst() {
