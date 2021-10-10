@@ -36,6 +36,11 @@ export class HomePage {
       enlace: '/certificacionesLst',
       Icon: 'briefcase'
     },
+    {
+      nombre: 'Envio de correos',
+      enlace: '/envios-de-correos',
+      Icon: 'briefcase'
+    },
     // {
     //   nombre: 'Acerca de',
     //   enlace: '',

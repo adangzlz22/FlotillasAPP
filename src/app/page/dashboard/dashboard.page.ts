@@ -36,14 +36,12 @@ export class DashboardPage implements OnInit {
     this.peticion.Post('choferes/ObtenerChoferNombre',SessionApp).then(result2=>{
       let m = JSON.parse(result2['Model']);
       this.nombreCompleto = m.nombre+' '+m.apeidoP+' '+m.apeidoM;
-      console.log(m)
     }).catch(errr=>{
         console.log(errr)
     });
     // this.usuario();
    this.obtenerReloj();
     this.ObtenerEstatus();
-    console.log(this.peticion.objVehiculo);
   }
   temporizador(reloj){
     let nuevoReloj:any;
@@ -54,8 +52,6 @@ export class DashboardPage implements OnInit {
     let minutos = relojito[1];
     let horas = relojito[0];
     setInterval(() => {
-      console.log(horas,minutos,segundos)
-      console.log(0)
       if(segundos > '00'){
         segundos--;
         if(segundos <= 9){
@@ -65,7 +61,6 @@ export class DashboardPage implements OnInit {
           minutos=59;
         }
         if (segundos == '00') {
-          console.log(minutos)
             minutos--;
           if(minutos <= 9){
             minutos = '0'+minutos;
@@ -147,7 +142,6 @@ export class DashboardPage implements OnInit {
     }
       this.peticion.Post('Bitacora/ObtenerEstatusActivo',objModel).then(result=>{
      let re = JSON.parse(result['Model']);
-     console.log(re)
      this.idEstatusr = re.idEstatus;
         if(this.idEstatusr!=undefined){
           this.obtenerColo(this.idEstatusr)
@@ -157,7 +151,6 @@ export class DashboardPage implements OnInit {
     });
   }
   obtenerColo(idEs){
-    console.log(idEs)
     if(idEs == 1)
     {
       this.coloranteDrive = 'primary';
@@ -192,7 +185,6 @@ export class DashboardPage implements OnInit {
     }
   }
   OFF() {
-    console.log('OFF');
     this.coloranteDrive = 'primary';
     this.coloranteOn = 'primary';
     this.coloranteSB = 'primary';
@@ -200,7 +192,6 @@ export class DashboardPage implements OnInit {
   this.CrearEditarStatus(3);
   }
   SB(){
-    console.log('SB');
     this.coloranteDrive = 'primary';
     this.coloranteOn = 'primary';
     this.coloranteSB = 'success';
@@ -208,7 +199,6 @@ export class DashboardPage implements OnInit {
     this.coloranteOff = 'primary';
   }
   ON(){
-    console.log('ON');
     this.coloranteDrive = 'primary';
     this.coloranteOn = 'success';
   this.CrearEditarStatus(1);
@@ -217,7 +207,6 @@ export class DashboardPage implements OnInit {
   }
   BotonesStatus
   DRIVE(){
-    console.log('DRIVE')
     this.coloranteDrive = 'success';
   this.CrearEditarStatus(2);
     this.coloranteOn = 'primary';

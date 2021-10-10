@@ -39,7 +39,11 @@ const routes: Routes = [
   {
     path: 'certificacionesLst',
     loadChildren: () => import('./page/certificaciones/certificaciones.module').then( m => m.CertificacionesLstPageModule)
+  },  {
+    path: 'envios-de-correos',
+    loadChildren: () => import('./envios-de-correos/envios-de-correos.module').then( m => m.EnviosDeCorreosPageModule)
   },
+
 
 ];
 

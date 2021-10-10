@@ -131,8 +131,8 @@ export class BitacoraPage implements OnInit {
       scrollTime: '00:00', // undo default 6am scrollTime
       height: '320px',
       headerToolbar: {
-        left: 'today prev', //,next',
-        center: 'title',
+        // left: 'hoy', //,next',
+        // center: 'title',
         // right: 'resourceTimelineDay'
       },
       initialView: 'resourceTimelineDay',

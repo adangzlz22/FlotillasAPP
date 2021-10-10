@@ -1,0 +1,32 @@
+ion-button{
+    width: 170px;
+    height: 80px;
+    padding: 5px;
+    margin: 5px;
+}.my-custom-menu {
+    --width: 500px;
+  }
+  .rojo{
+      background-color: red;
+
+  }
+.black{
+    background-color: black;
+
+}
+.orange{
+    background-color: orange;
+
+}
+.verde{
+    background-color: green;
+
+}
+.azul{
+    --ion-background-color: #0e5496 ;
+}
+
+.descargarPDF{
+    width: 95% !important;
+    height: 50px !important;
+}

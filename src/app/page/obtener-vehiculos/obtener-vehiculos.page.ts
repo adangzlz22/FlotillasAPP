@@ -18,6 +18,9 @@ export class ObtenerVehiculosPage implements OnInit {
   SeleccionarRemolques2:any;
   SeleccionarEnvios:any;
 
+
+  datosVehiculosAsignados:any;
+
   constructor(private userProv:UsuarioProvider,
               private peticion:PeticionProvider,
               public modalController: ModalController,
@@ -26,6 +29,10 @@ export class ObtenerVehiculosPage implements OnInit {
   ngOnInit() {
     this.obtenerVehiculos();
   }
+  ionViewWillEnter() {
+    this.obtenerVehiculosYaAsignados();
+  }
+
 
   obtenerVehiculos(){
     const user = this.userProv.getSesion();
@@ -56,7 +63,10 @@ export class ObtenerVehiculosPage implements OnInit {
 
     let SessionApp={
       placa:this.SeleccionarVehiculo,
-      idChofer: user.idChofer
+      idChofer: user.idChofer,
+      remolque1: this.SeleccionarRemolques1,
+      remolque2: this.SeleccionarRemolques2,
+      envios: this.SeleccionarEnvios,
     }
 
     this.peticion.Post('choferes/GuardarSessionAppActiva',SessionApp).then(result2=>{
@@ -66,6 +76,28 @@ export class ObtenerVehiculosPage implements OnInit {
         console.log(errr)
     });
   }
+
+  obtenerVehiculosYaAsignados(){
+      const user = this.userProv.getSesion();
+
+      let SessionApp={
+        idChofer: user.idChofer
+      }
+      this.peticion.Post('choferes/obtenerVehiculosYaAsignados',SessionApp).then(result2=>{
+       this.datosVehiculosAsignados = JSON.parse(result2['Model']);
+       
+       this.SeleccionarVehiculo = this.datosVehiculosAsignados.placa;
+       this.SeleccionarRemolques1 = this.datosVehiculosAsignados.Remolque1;
+       this.SeleccionarRemolques2 = this.datosVehiculosAsignados.Remolque2;
+       this.SeleccionarEnvios = this.datosVehiculosAsignados.Envios;
+
+
+       console.log(this.datosVehiculosAsignados);
+        }).catch(errr=>{
+          console.log(errr)
+      });
+  }
+
 
   crazyEvent(event){
     console.log(event)
